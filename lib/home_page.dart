@@ -18,19 +18,21 @@ class _HomePageState extends State<HomePage> {
     var palette = generatedRandomPalette();
 
     return MaterialApp(
-      home: GestureDetector(
-        onTap: () => setState(() {
-          palette = generatedRandomPalette();
-        }),
-        child: ColoredBox(
-          color: palette.backgroundColor,
-          child: Center(
-            child: Text(
-              'Hello there',
-              style: TextStyle(
-                fontSize: Constants.textFontSize,
-                color: palette.textColor,
-                fontWeight: FontWeight.w600,
+      home: Material(
+        child: GestureDetector(
+          onTap: () => setState(() {
+            palette = generatedRandomPalette();
+          }),
+          child: ColoredBox(
+            color: palette.backgroundColor,
+            child: Center(
+              child: Text(
+                'Hello there',
+                style: TextStyle(
+                  fontSize: Constants.textFontSize,
+                  color: palette.textColor,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
           ),
