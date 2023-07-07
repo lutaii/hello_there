@@ -1,0 +1,24 @@
+{
+    "hello_there": "Hello there",
+    "@hello_there": {
+        "description": "Hello there text"
+    },
+    "hello": "Hello",
+    "@hello": {
+        "description": "Hello text"
+    },
+    "palette_history_title": "Palette History",
+    "@palette_history_title": {
+        "description": "Palette History Title"
+    },
+    "snackbar_copy_to_clipboard_text": "{hexCode} copied to clipboard",
+    "@snackbar_copy_to_clipboard_text": {
+        "description": "SnackBar copy to clipboard text",
+        "placeholders": {
+            "hexCode": {
+            "type": "String",
+            "example": "0e0c57"
+            }
+        }
+    }
+}

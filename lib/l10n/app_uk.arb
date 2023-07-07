@@ -1,0 +1,14 @@
+{
+    "hello_there": "Привіт",
+    "hello": "Привіт",
+    "palette_history_title": "Історія палітр",
+    "snackbar_copy_to_clipboard_text": "{hexCode} скопійовано в буфер обміну",
+    "@snackbar_copy_to_clipboard_text": {
+        "placeholders": {
+            "hexCode": {
+            "type": "String",
+            "example": "0e0c57"
+            }
+        }
+    }
+}

@@ -1,62 +1,31 @@
-import 'dart:math';
+// ignore_for_file: public_member_api_docs
 
 import 'package:flutter/material.dart';
-import 'package:hello_there/constants.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:hello_there/common/logger.dart';
+import 'package:hello_there/presentation/palette_generator/palette_generator.dart';
 
-/// hello_there application home page widget
-class HomePage extends StatefulWidget {
-  /// home page constructor
-  const HomePage({Key? key}) : super(key: key);
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    var palette = generatedRandomPalette();
-
     return MaterialApp(
-      home: Material(
-        child: GestureDetector(
-          onTap: () => setState(() {
-            palette = generatedRandomPalette();
-          }),
-          child: ColoredBox(
-            color: palette.backgroundColor,
-            child: Center(
-              child: Text(
-                'Hello there',
-                style: TextStyle(
-                  fontSize: Constants.textFontSize,
-                  color: palette.textColor,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      localeListResolutionCallback: (locales, supportedLocales) {
+        logger.d('device locales=$locales supported locales=$supportedLocales');
+        if (locales != null) {
+          for (final Locale locale in locales) {
+            if (supportedLocales.contains(locale)) {
+              return locale;
+            }
+          }
+        }
 
-  ({Color textColor, Color backgroundColor}) generatedRandomPalette() {
-    final random = Random();
-
-    return (
-      textColor: Color.fromRGBO(
-        random.nextInt(Constants.rgbValue),
-        random.nextInt(Constants.rgbValue),
-        random.nextInt(Constants.rgbValue),
-        1,
-      ),
-      backgroundColor: Color.fromRGBO(
-        random.nextInt(Constants.rgbValue),
-        random.nextInt(Constants.rgbValue),
-        random.nextInt(Constants.rgbValue),
-        1,
-      ),
+        return const Locale('en', 'US');
+      },
+      home: const PaletteGeneratorScreen(),
     );
   }
 }
