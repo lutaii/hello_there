@@ -10,22 +10,10 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      localeListResolutionCallback: (locales, supportedLocales) {
-        logger.d('device locales=$locales supported locales=$supportedLocales');
-        if (locales != null) {
-          for (final Locale locale in locales) {
-            if (supportedLocales.contains(locale)) {
-              return locale;
-            }
-          }
-        }
-
-        return const Locale('en', 'US');
-      },
-      home: const PaletteGeneratorScreen(),
+      home: PaletteGeneratorScreen(),
     );
   }
 }
